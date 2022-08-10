@@ -1,0 +1,62 @@
+.sidePara{
+    padding: 0px;
+    margin: 0px;
+    line-height: 4px;
+    font-size: 12px;
+}
+
+.sidenavul ul li{
+    list-style: none;
+    border: 0px;
+    padding: 0px;
+    margin:0px;
+
+}
+.sidenavul ul li a{
+   padding: 8px 30px;
+   margin: 6px 0px 6px 6px;
+   
+}
+.sidenavul ul li a:hover{
+    
+    background-color: rgb(233, 233, 233);
+    border-radius: 22px 0px 0px 22px;
+    cursor: pointer;
+ }
+ .setActivebg{
+    
+    background-color: rgb(255, 255, 255);
+    border-radius: 22px 0px 0px 22px;
+    cursor: pointer;
+ }
+.sidenavul ul {
+    
+    border: 0px;
+    padding: 0px;
+    margin:0px;
+   
+   
+}
+
+.FiloSubMenu{
+    padding: 0px 40px;
+    margin: 0px;
+}
+
+.TeamableTop p{
+    padding: 0px;
+    margin: 0px;
+    line-height: 0px;
+    font-size: 12px;
+
+}
+
+
+
+.TeamableTop {
+    padding: 0px 30px;
+ 
+
+}
+
+

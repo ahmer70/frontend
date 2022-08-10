@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import { getAll } from "../redux/actions/userActions";
+import { getAll } from "../redux/actions/founderActions";
+import { registerrespponse } from "../redux/actions/users_responseActions";
 import { connect } from "react-redux";
 import Query from './Query';
 import Display from './Display';
-const Apply = ({ getAll, userData }) => {
+const Apply = ({ getAll, registerrespponse, userData }) => {
     const [Data, setData] = useState({
         dn: "",
         mar: "",
@@ -16,7 +17,7 @@ const Apply = ({ getAll, userData }) => {
     }),
         [List, setList] = useState(false),
         [State, setState] = useState(false);
-    console.log("Data", Data)
+    console.log("Data", userData)
     useEffect(() => {
         getAll();
     }, [getAll]);
@@ -31,6 +32,7 @@ const Apply = ({ getAll, userData }) => {
         // await registerqulification(Data)
 
         setState(true)
+        await registerrespponse(Data)
     };
 
     let filt = List && List.filter((e) => (e.average_revenue).toString() === Data.mar
@@ -41,7 +43,6 @@ const Apply = ({ getAll, userData }) => {
         (e.industry).toString() === Data.industry
     )
 
-    console.log("ata", filt)
     return (
         <div
             className="container-md  mx-auto   signup d-flex align-items-center justify-content-center"
@@ -54,8 +55,8 @@ const Apply = ({ getAll, userData }) => {
 };
 const mapStateToProps = (state) => {
     return {
-        userData: state.user.list,
+        userData: state.founder.list,
     };
 };
 
-export default connect(mapStateToProps, { getAll })(Apply);
+export default connect(mapStateToProps, { getAll, registerrespponse })(Apply);

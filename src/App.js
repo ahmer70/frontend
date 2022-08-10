@@ -6,7 +6,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 const Auth = lazy(() => import('./components/Auth'))
 const Apply = lazy(() => import('./components/Apply'))
-const Admin = lazy(() => import('./components/Admin'))
+const AdminPanel = lazy(() => import('./components/admin/index'))
+const UserList = lazy(() => import('./components/admin/UserList'))
+const ResponseList = lazy(() => import('./components/admin/ResponseList'))
 
 function App() {
 
@@ -16,7 +18,10 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Auth />} />
           <Route exact path="/apply" element={<Apply />} />
-          <Route exact path="/admin_panel" element={<Admin />} />
+          <Route exact path="/admin_panel" element={<AdminPanel />} />
+          <Route exact path="/users_list" element={<UserList />} />
+          <Route exact path="/response_list" element={<ResponseList />} />
+
         </Routes>
       </Router>
     </Suspense>

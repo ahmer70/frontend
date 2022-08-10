@@ -1,23 +1,20 @@
-import { usersConstants } from '../constant';
+import { users_res_Constants } from '../constant';
 
-const { UReq, UErr, USuc, UCReq, UCErr, UCSuc, UClr, UAddAtt, UDelAtt, UUptAtt } = usersConstants
+const { URReq, URErr, URSuc, URClr, URAddAtt, URDelAtt, URUptAtt } = users_res_Constants
 const iS = {
-    isSuc: false, isErr: false, isL: false, list: [], data: []
+    isSuc: false, isErr: false, isL: false, list: []
 };
 
-export const UsersReducer = (state = iS, action) => {
+export const UserResReducer = (state = iS, action) => {
 
     let listTemp = state.list;
 
     switch (action.type) {
-        case USuc: return { ...state, isErr: false, isSuc: true, isL: false, list: action.payload };
-        case UReq: return { ...state, isErr: false, isSuc: false, isL: true };
-        case UErr: return { ...state, isErr: true, isSuc: false, isL: false };
-        case UCSuc: return { ...state, isErr: false, isSuc: true, isL: false, data: action.payload };
-        case UCReq: return { ...state, isErr: false, isSuc: false, isL: true };
-        case UCErr: return { ...state, isErr: true, isSuc: false, isL: false };
-        case UClr: return { ...state, isErr: false, isSuc: false, isL: false };
-        case UDelAtt:
+        case URSuc: return { ...state, isErr: false, isSuc: true, isL: false, list: action.payload };
+        case URReq: return { ...state, isErr: false, isSuc: false, isL: true };
+        case URErr: return { ...state, isErr: true, isSuc: false, isL: false };
+        case URClr: return { ...state, isErr: false, isSuc: false, isL: false };
+        case URDelAtt:
             if (listTemp && listTemp.length > 0) {
                 listTemp = listTemp.filter(i => Number(i._id) !== Number(action.payload._id));
             }
@@ -26,7 +23,7 @@ export const UsersReducer = (state = iS, action) => {
                 ...state, list: listTemp, isL: false
             };
 
-        case UUptAtt:
+        case URUptAtt:
             if (listTemp && listTemp.length > 0)
                 listTemp = listTemp.map(i => {
                     if (Number(i._id) === Number(action.payload._id)) i = action.payload;
@@ -38,7 +35,7 @@ export const UsersReducer = (state = iS, action) => {
             };
 
 
-        case UAddAtt:
+        case URAddAtt:
             if (listTemp && listTemp.length > 0)
                 listTemp = listTemp.concat([action.payload]);
             else if (listTemp) {

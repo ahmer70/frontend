@@ -1,6 +1,6 @@
 import api from '../../utils/api';
 import { usersConstants } from '../constant';
-const { UReq, UErr, USuc, UClr, UAddAtt, UDelAtt, UUptAtt } = usersConstants
+const { UReq, UErr, USuc, UCReq, UCErr, UCSuc, UClr, UAddAtt, UDelAtt, UUptAtt } = usersConstants
 
 export const clearLabel = () => async (dispatch) => dispatch({ type: UClr });
 export const registerqulification = (data) => async (dispatch) => {
@@ -38,7 +38,7 @@ export const getAll = (data) => async (dispatch) => {
 
     dispatch({ type: UReq });
     try {
-        let res = await api.get('/users/getAll', { headers: { 'authorization': `${localStorage.getItem('token')}` } })
+        let res = await api.get('/users/getAllUsers', { headers: { 'authorization': `${localStorage.getItem('token')}` } })
         if (res.data) {
             dispatch({ type: USuc, payload: res.data.user })
         } else {
@@ -49,6 +49,22 @@ export const getAll = (data) => async (dispatch) => {
     }
 }
 
+
+export const getAllCount = (data) => async (dispatch) => {
+
+
+    dispatch({ type: UCReq });
+    try {
+        let res = await api.get('/users/getAllCount', { headers: { 'authorization': `${localStorage.getItem('token')}` } })
+        if (res.data) {
+            dispatch({ type: UCSuc, payload: res.data })
+        } else {
+            dispatch({ type: UCErr })
+        }
+    } catch (error) {
+        console.log("can not do", { isErr: true })
+    }
+}
 export const updateUser = (data) => async (dispatch) => {
     dispatch({ type: UReq });
     try {
